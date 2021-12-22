@@ -72,7 +72,7 @@ export class DataNode {
             }
             return null;
         }
-        if (remainingNodes.length === 0) {
+        if (remainingNodes.length !== 0) {
             return null;
         }
         return {
