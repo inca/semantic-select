@@ -38,13 +38,12 @@ export function semanticQuery(query: ParsedSelectQuery, root: DataNode) {
             });
         }
         for (const [key, sel] of Object.entries(query.fields)) {
-            // TODO think about accumulating arrays
-            const value = sel.selectKey ? node.key : node.value;
-            if (node.match(sel)) {
+            const match = node.match(sel);
+            if (match) {
                 fields.push({
                     key,
                     path: node.path(),
-                    value,
+                    value: match.value,
                 });
             }
         }

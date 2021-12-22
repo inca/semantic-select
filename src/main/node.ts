@@ -38,19 +38,20 @@ export class DataNode {
         }
     }
 
-    *select(selector: string | Selector): IterableIterator<DataNode> {
+    *select(selector: string | Selector): IterableIterator<MatchResult> {
         if (typeof selector === 'string') {
             yield* this.select(parseSelector(selector));
             return;
         }
         for (const node of this.descendants()) {
-            if (node.match(selector)) {
-                yield node;
+            const match = node.match(selector);
+            if (match) {
+                yield match;
             }
         }
     }
 
-    match(selector: string | Selector): boolean {
+    match(selector: string | Selector): MatchResult | null {
         if (typeof selector === 'string') {
             return this.match(parseSelector(selector));
         }
@@ -67,11 +68,17 @@ export class DataNode {
                 if (tok.deep) {
                     continue nextNode;
                 }
-                return false;
+                return null;
             }
-            return false;
+            return null;
         }
-        return remainingNodes.length === 0;
+        if (remainingNodes.length === 0) {
+            return null;
+        }
+        return {
+            node: this,
+            value: selector.selectKey ? this.key : this.value,
+        };
     }
 
     protected matchToken(token: SelectorToken) {
