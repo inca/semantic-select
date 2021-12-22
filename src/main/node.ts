@@ -38,9 +38,9 @@ export class DataNode {
         }
     }
 
-    *find(selector: string | Selector): IterableIterator<DataNode> {
+    *select(selector: string | Selector): IterableIterator<DataNode> {
         if (typeof selector === 'string') {
-            yield* this.find(parseSelector(selector));
+            yield* this.select(parseSelector(selector));
             return;
         }
         for (const node of this.descendants()) {

@@ -27,13 +27,7 @@ export function parseQuery(query: SelectQuery): ParsedSelectQuery {
     return result;
 }
 
-export function select(query: SelectQuery, value: unknown) {
-    const node = new DataNode(value);
-    const parsedQuery = parseQuery(query);
-    return _selectQuery(parsedQuery, node);
-}
-
-function _selectQuery(query: ParsedSelectQuery, root: DataNode) {
+export function semanticQuery(query: ParsedSelectQuery, root: DataNode) {
     const entries: QueryEntry[] = [];
     const fields: QueryField[] = [];
     for (const node of root.descendants()) {

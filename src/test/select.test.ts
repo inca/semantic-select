@@ -3,14 +3,14 @@ import { readFileSync } from 'fs';
 import path from 'path';
 import Yaml from 'yaml';
 
-import { select } from '../main/select';
+import { semanticSelect } from '../main/api';
 
 const data = Yaml.parse(readFileSync(path.join(process.cwd(), 'src/test/data.yaml'), 'utf8'));
 
-describe('select', () => {
+describe('semanticSelect', () => {
 
     it('works', () => {
-        const results = select({
+        const results = semanticSelect({
             selector: 'items categories > * > *',
             fields: {
                 itemName: 'items name',
