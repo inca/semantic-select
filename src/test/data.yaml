@@ -1,0 +1,55 @@
+stores:
+  - name: Book Store
+    address:
+      country: GB
+      city: London
+      street: 82 Kingsway
+    items:
+      categories:
+        SALE:
+          - name: Mystery Book
+            price:
+              value: 20
+              currency: GBP
+            oldPrice:
+              value: 40
+              currency: GBP
+          - name: Revelation Book
+            price:
+              value: 30
+              currency: GBP
+            oldPrice:
+              value: 50
+              currency: GBP
+        NEW:
+          - name: Surprise Book
+            price:
+              value: 100
+              currency: GBP
+    staff:
+      - name: Jenny
+        age: 42
+        roles: [manager]
+      - name: Jane
+        age: 36
+        roles: [supervisor]
+  - name: Coffee Shop
+    items:
+      categories:
+        STANDARD:
+          - name: Espresso
+            price:
+              value: 3
+              currency: GBP
+          - name: Flat White
+            price:
+              value: 3.2
+              currency: GBP
+          - name: Capuccino
+            price:
+              value: 4.2
+              currency: GBP
+    staff:
+      - name: Susan
+        age: 29
+        roles: [director]
