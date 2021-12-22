@@ -1,6 +1,6 @@
 {
     "name": "semantic-select",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "description": "Yet Another Json Query Language",
     "main": "out/main/index.js",
     "types": "out/main/index.d.ts",
